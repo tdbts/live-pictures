@@ -25,6 +25,7 @@ class VideoPlayerApp(App):
         video.state = 'play'
         video.options = {'eos': 'loop'}
         video.allow_stretch=True
+        video.volume = 0
         return video
 
 
