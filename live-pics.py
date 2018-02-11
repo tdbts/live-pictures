@@ -5,6 +5,7 @@ from sys import argv
 from os.path import dirname, join
 from kivy.app import App
 from kivy.uix.video import Video
+from kivy.core.window import Window
 
 # check what formats are supported for your targeted devices
 # for example try h264 video and acc audo for android using an mp4
@@ -26,6 +27,9 @@ class VideoPlayerApp(App):
         video.options = {'eos': 'loop'}
         video.allow_stretch=True
         video.volume = 0
+
+        Window.borderless = True
+        
         return video
 
 
