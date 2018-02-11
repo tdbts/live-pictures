@@ -29,7 +29,8 @@ class VideoPlayerApp(App):
         video.volume = 0
 
         Window.borderless = True
-        
+        Window.rotation += 270
+
         return video
 
 
