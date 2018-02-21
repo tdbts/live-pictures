@@ -19,8 +19,7 @@ class VideoPlayerApp(App):
         if len(argv) > 1:
             filename = argv[1]
         else:
-            curdir = dirname(__file__)
-            filename = join(curdir, 'cityCC0.mpg')
+            raise ValueError("Must specify video.")
         
         video = Video(source=filename)
         video.state = 'play'
