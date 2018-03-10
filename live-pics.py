@@ -25,7 +25,7 @@ class LivePictures(App):
         Window.rotation += 270
 
     def get_root_widget(self):
-        return LiveDisplay().start(self.get_filename())
+        return LiveDisplay(self.get_filename())
 
     def build(self):
         self.configure_window()

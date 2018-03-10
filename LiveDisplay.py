@@ -1,17 +1,19 @@
 from kivy.uix.video import Video
 
 
-class LiveDisplay():
+class LiveDisplay(Video):
 
-    @staticmethod
-    def create_video(filename):
-        video = Video(source=filename)
-        video.state = 'play'
-        video.options = {'eos': 'loop'}
-        video.allow_stretch = True
-        video.volume = 0
+    def __init__(self, filename):
+        super(LiveDisplay, self).__init__()
 
-        return video
+        self.source = filename
+        self.create_video()
+
+    def create_video(self):
+        self.state = 'play'
+        self.options = {'eos': 'loop'}
+        self.allow_stretch = True
+        self.volume = 0
 
     def on_touch_down(self, touch):
         print("Brrrrr")
@@ -22,6 +24,5 @@ class LiveDisplay():
     def on_touch_up(self, touch):
         print("lyyyyyyyyn!!!!")
 
-    def start(self, filename):
-        return self.create_video(filename)
-
+    def build(self):
+        return self.create_video()
