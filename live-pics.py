@@ -30,14 +30,17 @@ class VideoPlayerApp(App):
 
         return video
 
-    def build(self):
-
-        video = self.create_video(self.get_filename())
-
+    def configure_window(self):
         Window.borderless = True
         Window.rotation += 270
 
-        return video
+    def get_root_widget(self):
+        return self.create_video(self.get_filename())
+
+    def build(self):
+        self.configure_window()
+
+        return self.get_root_widget()
 
 
 if __name__ == '__main__':
