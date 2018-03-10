@@ -14,18 +14,25 @@ from kivy.core.window import Window
 
 class VideoPlayerApp(App):
 
-    def build(self):
-        
+    def get_filename(self):
         if len(argv) > 1:
-            filename = argv[1]
+            return argv[1]
         else:
             raise ValueError("Must specify video.")
-        
+
+    @staticmethod
+    def create_video(filename):
         video = Video(source=filename)
         video.state = 'play'
         video.options = {'eos': 'loop'}
-        video.allow_stretch=True
+        video.allow_stretch = True
         video.volume = 0
+
+        return video
+
+    def build(self):
+
+        video = self.create_video(self.get_filename())
 
         Window.borderless = True
         Window.rotation += 270
