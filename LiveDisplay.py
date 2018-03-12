@@ -17,12 +17,15 @@ class LiveDisplay(Video):
 
     def on_touch_down(self, touch):
         print("Brrrrr")
+        return True
 
     def on_touch_move(self, touch):
         print("ooooo")
+        return True
 
     def on_touch_up(self, touch):
         print("lyyyyyyyyn!!!!")
+        return True
 
     def build(self):
         return self.create_video()
