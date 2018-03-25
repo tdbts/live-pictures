@@ -8,6 +8,7 @@ class LivePicture(Video):
         self.height = 0
         self.source = filename
         self.create_video()
+        self.state = 'pause'
 
     def create_video(self):
         self.options = {'eos': 'loop'}

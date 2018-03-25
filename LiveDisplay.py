@@ -1,41 +1,40 @@
 from kivy.uix.gridlayout import GridLayout
 from LivePicture import LivePicture
+from Playlist import Playlist
 
 
 class LiveDisplay(GridLayout):
 
-    def __init__(self, filename, **kwargs):
+    def __init__(self, videos, **kwargs):
         super(LiveDisplay, self).__init__(**kwargs)
-        self.current = self.create_picture(filename)
+        self.pictures = Playlist(videos)
+        self.current = LivePicture(self.pictures.get_current())
 
-    def create_picture(self, filename):
-        return LivePicture(filename)
-
-    def show_live_picture(self, source):
+    def show_live_picture(self, live_picture):
         if len(self.children) == 0:
-            self.add_widget(self.current)
+            self.add_widget(live_picture)
 
-        if self.is_showing_source(source):
+        if self.is_showing_picture(live_picture):
             return
 
-        if self.current.source != source:
-            self.swap_picture(self.create_picture(source))
+        if self.current.source != live_picture.source:
+            self.swap_picture(live_picture)
 
         self.current.play()
 
-    def is_showing_source(self, source):
-        return self.current and self.current.source == source and self.current.state == 'play' and self.current.is_showing()
+    def is_showing_picture(self, picture):
+        return self.current and self.current == picture.source and self.current.state == 'play' and self.current.is_showing()
 
     def swap_picture(self, picture):
         self.current.unload()
         self.remove_widget(self.current)
+        self.add_widget(picture)
         self.current = picture
-        self.add_widget(self.current)
 
     def on_touch_down(self, touch):
-        self.show_live_picture("/home/tdbts/Videos/vinny-and-kaytee-and-the-city.mp4")
+        self.show_live_picture(LivePicture(self.pictures.next()))
         return True
 
     def start(self):
-        self.show_live_picture(self.current.source)
+        self.show_live_picture(self.current)
         return self
