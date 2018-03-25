@@ -24,17 +24,13 @@ class LiveDisplay(GridLayout):
         self.current.play()
 
     def is_showing_source(self, source):
-        return self.current and self.current.source == source and self.current.state == 'play'
+        return self.current and self.current.source == source and self.current.state == 'play' and self.current.is_showing()
 
     def swap_picture(self, picture):
-        self.unload_picture()
+        self.current.unload()
         self.remove_widget(self.current)
         self.current = picture
         self.add_widget(self.current)
-
-    def unload_picture(self):
-        if self.current:
-            self.current.unload()
 
     def on_touch_down(self, touch):
         self.show_live_picture("/home/tdbts/Videos/vinny-and-kaytee-and-the-city.mp4")
