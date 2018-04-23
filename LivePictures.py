@@ -9,7 +9,7 @@ from os import listdir
 from os.path import isdir, isfile, join
 
 # check what formats are supported for your targeted devices
-# for example try h264 video and acc audo for android using an mp4
+# for example try h264 video and acc audio for android using an mp4
 # container
 
 
