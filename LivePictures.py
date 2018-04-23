@@ -59,7 +59,6 @@ class LivePictures(App):
 
     def build(self):
         self.configure_window()
-
         return self.get_root_widget()
 
 
