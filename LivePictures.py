@@ -26,10 +26,6 @@ class LivePictures(App):
         else:
             raise ValueError("Must specify video file or directory.")
 
-    # for item in os.listdir(root):
-    #     if os.path.isfile(os.path.join(root, item)):
-    #         print item
-
     def get_video_files(self):
         files = []
         location = self.get_videos_location()
