@@ -1,4 +1,4 @@
-class Playlist():
+class Playlist:
 
     def __init__(self, videos, start_index=0):
         self.videos = videos
