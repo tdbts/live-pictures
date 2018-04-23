@@ -31,8 +31,12 @@ class LiveDisplay(GridLayout):
         self.add_widget(picture)
         self.current = picture
 
+    # We can use 'sx' and 'sy' touch properties to get the x / y proportions
+    # vis-a-vis the widget, where the origin is in the bottom-left hand corner
     def on_touch_down(self, touch):
-        self.show_live_picture(LivePicture(self.pictures.next()))
+        navigation_demarcation_x = 0.5
+        picture = self.pictures.previous() if touch.sx < navigation_demarcation_x else self.pictures.next()
+        self.show_live_picture(LivePicture(picture))
         return True
 
     def start(self):
