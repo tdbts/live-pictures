@@ -49,16 +49,16 @@ class LivePictures(App):
         print("videos:", videos)
         return videos
 
-    @staticmethod
-    def configure_window():
-        Window.borderless = True
-        Window.rotation += 270
+    # @staticmethod
+    # def configure_window():
+    #     Window.borderless = True
+    #     Window.rotation += 270
 
     def get_root_widget(self):
         return LiveDisplay(self.videos).start()
 
     def build(self):
-        self.configure_window()
+        # self.configure_window()
         return self.get_root_widget()
 
 
