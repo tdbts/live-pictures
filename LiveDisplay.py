@@ -31,6 +31,13 @@ class LiveDisplay(GridLayout):
         self.add_widget(picture)
         self.current = picture
 
+    # Note: In order to receive touch events, need to add the following lines to
+    # Kivy's 'config.ini' file:
+    #   mouse = mouse
+    #   mtdev_%(name)s = probesysfs,provider=mtdev
+    #   hid_%(name)s = probesysfs,provider=hidinput
+    # See https://github.com/mrichardson23/rpi-kivy-screen for more information.
+
     # We can use 'sx' and 'sy' touch properties to get the x / y proportions
     # vis-a-vis the widget, where the origin is in the bottom-left hand corner
     def on_touch_down(self, touch):
