@@ -49,6 +49,7 @@ class LivePictures(App):
         print("videos:", videos)
         return videos
 
+    # TODO: Create UI for picture rotation and navigation configuration
     # @staticmethod
     # def configure_window():
     #     Window.borderless = True
