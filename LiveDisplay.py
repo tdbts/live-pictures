@@ -40,7 +40,8 @@ class LiveDisplay(GridLayout):
     def on_touch_down(self, touch):
         print("touch:", touch)
         navigation_demarcation_x = 0.5
-        picture = self.playlist.previous() if touch.sx < navigation_demarcation_x else self.playlist.next()
+        # picture = self.playlist.previous() if touch.sx < navigation_demarcation_x else self.playlist.next()
+        picture = self.playlist.previous() if touch.sy < navigation_demarcation_x else self.playlist.next()
         self.show_live_picture(picture)
         return True
 
